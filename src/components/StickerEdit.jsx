@@ -10,12 +10,8 @@ export default function StickerEdit() {
 
   useEffect(() => {
     getStickers(id)
-      .then((data) => (setStickers(data), setNewDescription(data.description)))
+      .then((data) => {setStickers(data); setNewDescription(data.description)})
   }, [])
-  
-  function getDescription () {
-    return newDescription
-  }
 
   function onCancelClick () {
     window.location.assign('/');
