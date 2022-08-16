@@ -1,11 +1,7 @@
 import "./App.css";
 import StickerList from "./components/StickerList";
 import StickerEdit from "./components/StickerEdit";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -17,7 +13,6 @@ function App() {
           <Route path="/:id" element={<StickerEdit />}></Route>
         </Routes>
       </BrowserRouter>
-      
     </div>
   );
 }

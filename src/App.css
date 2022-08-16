@@ -82,7 +82,7 @@ input[type="text"] {
 }
 
 .text {
-  word-wrap:break-word;
+  word-wrap: break-word;
   cursor: pointer;
   height: 90%;
 }
@@ -101,33 +101,47 @@ input[type="text"] {
 
 .switch-btn {
   display: inline-block;
-  width: 40px; /* ширина */
-  height: 25px; /* высота */
-  border-radius: 19px; /* радиус скругления */
-  background: blue; /* цвет фона */
+  width: 40px;
+  /* ширина */
+  height: 25px;
+  /* высота */
+  border-radius: 19px;
+  /* радиус скругления */
+  background: blue;
+  /* цвет фона */
   z-index: 0;
   margin: 0;
   padding: 0;
   border: none;
   cursor: pointer;
   position: relative;
-  transition-duration: 300ms; /* анимация */
+  transition-duration: 300ms;
+  /* анимация */
 }
+
 .switch-btn::after {
   content: "";
-  height: 19px; /* высота кнопки */
-  width: 19px; /* ширина кнопки */
+  height: 19px;
+  /* высота кнопки */
+  width: 19px;
+  /* ширина кнопки */
   border-radius: 9px;
-  background: #fff; /* цвет кнопки */
-  top: 3px; /* положение кнопки по вертикали относительно основы */
-  left: 3px; /* положение кнопки по горизонтали относительно основы */
-  transition-duration: 300ms; /* анимация */
+  background: #fff;
+  /* цвет кнопки */
+  top: 3px;
+  /* положение кнопки по вертикали относительно основы */
+  left: 3px;
+  /* положение кнопки по горизонтали относительно основы */
+  transition-duration: 300ms;
+  /* анимация */
   position: absolute;
   z-index: 1;
 }
+
 .switch-on {
   background: #bfbfbf;
 }
+
 .switch-on::after {
   left: 18px;
 }
@@ -148,15 +162,15 @@ input[type="text"] {
 
 .modal {
   position: fixed;
-  z-index: 1; 
+  z-index: 1;
   padding-top: 100px;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modalShow {
@@ -209,13 +223,12 @@ input[type="text"] {
   width: 30%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly; 
-  padding-top: 30px; 
+  justify-content: space-evenly;
+  padding-top: 30px;
 }
 
 .edit_page_buttons {
   margin-top: 30px;
-  
   width: 50%;
   display: flex;
   justify-content: space-between;

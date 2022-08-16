@@ -1,53 +1,56 @@
 import { useEffect, useState } from "react";
-import {
-    useParams,
-  } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getStickers, updateSticker } from "../services/stickers";
 
 export default function StickerEdit() {
-    const { id } = useParams();
-    const [stickers, setStickers] = useState([]);
-    const [newDescription, setNewDescription] = useState('');
+  const { id } = useParams();
+  const [stickers, setStickers] = useState([]);
+  const [newDescription, setNewDescription] = useState('');
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        getStickers()
-            .then(data => setStickers(data))
-    }, [])
-    
-    const sticker = stickers.find((sticker) => sticker.id === id);
-    
-    function getDescription () {
-        return (sticker) ? (sticker.description) : ('')
-    }
+  useEffect(() => {
+    getStickers(id)
+      .then((data) => (setStickers(data), setNewDescription(data.description)))
+  }, [])
+  
+  function getDescription () {
+    return newDescription
+  }
 
-    function onCancelClick () {
-        window.location.assign('/');
-    }
+  function onCancelClick () {
+    window.location.assign('/');
+  }
 
-    function onChange (e) {
-        setNewDescription(e.target.value);
-    }
+  function onChange (e) {
+    setNewDescription(e.target.value);
+  }
 
-    async function onSaveClick () {
-        const newSticker = { ...sticker, description: newDescription};
-        updateSticker(newSticker)
-            .then(setStickers(stickers.map((sticker) => (sticker.id === id ? newSticker : sticker))))
-            .then(window.location.assign('/'))
-    }
-    
+  function onSaveClick () {
+    const newSticker = { ...stickers, description: newDescription};
+    updateSticker(newSticker)
+      .then(() => setStickers(newSticker))
+      .then(() => navigate("../"))
+  }
+
+  function text () {
     return (
-        <div className="edit_page">
-            <label>Change your description</label>
-            <textarea 
-                className="edit_description"
-                onChange={onChange}
-                defaultValue={getDescription()}
-            />
-            <div className="edit_page_buttons">
-                <button onClick={onCancelClick}>Cancel</button>
-                <button onClick={onSaveClick}>Save</button>
-            </div>
-        </div>
-        
+      <textarea 
+        className="edit_description"
+        onChange={onChange}
+        value={newDescription}
+      />
     )
+  }
+  
+  return (
+    <div className="edit_page">
+      <label>Change your description</label>
+      {text()}
+      <div className="edit_page_buttons">
+        <button onClick={onCancelClick}>Cancel</button>
+        <button onClick={onSaveClick}>Save</button>
+      </div>
+    </div>
+    
+  )
 }
