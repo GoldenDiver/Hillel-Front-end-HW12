@@ -14,7 +14,7 @@ export default function StickerEdit() {
   }, [])
 
   function onCancelClick () {
-    window.location.assign('/');
+    navigate("../");
   }
 
   function onChange (e) {
